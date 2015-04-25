@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+disk1
+{
+    type            actuationDiskSource;
+    active          on;            //on/off switch
+    selectionMode   cellSet;       //cellSet // points //cellZone
+    cellSet         actuationDisk1;//cellSet name when selectionMode = cellSet
+
+    actuationDiskSourceCoeffs
+    {
+        fieldNames  (U);
+        diskDir     (1 0 0);   // orientation of the disk
+        Cp          0.34;      // Cp
+        Ct          0.7;       // Ct
+        diskArea    0.0490873852;         // disk area
+        upstreamPoint (35 1.5 0.75);
+    }
+}
+
+
+kSource 
+{
+    type scalarExplicitSetValue;
+    active true;
+    selectionMode cellSet;
+    cellSet actuationDisk1;
+
+    scalarExplicitSetValueCoeffs
+    {
+        volumeMode      absolute; //specific
+        injectionRate
+        {
+            k   4.05;
+            epsilon   150;//l = 0.1 mm
+        }
+    }
+}
+
+//disk2
+//{
+  //  type            actuationDiskSource;
+  //  active          on;
+  //  selectionMode   cellSet;
+  //  cellSet         actuationDisk2;
+
+//    actuationDiskSourceCoeffs
+//    {
+//        fieldNames  (U);
+//        diskDir     (1 0 0);
+//        Cp          0.53;
+//        Ct          0.58;
+//        diskArea    0.05;
+//        upstreamPoint (25 0 0.6);//orig z 1070
+//    }
+//}
+
+// ************************************************************************* //
