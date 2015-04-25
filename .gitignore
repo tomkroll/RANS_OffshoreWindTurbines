@@ -1,0 +1,7 @@
+*~
+*.pvsm
+Files
+constant/polyMesh
+!constant/polyMesh/blockMeshDict
+[0-9]*
+!0.org
