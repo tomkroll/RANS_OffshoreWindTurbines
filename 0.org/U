@@ -25,13 +25,15 @@ boundaryField
 {
     //- Set patchGroups for constraint patches
     #include "${WM_PROJECT_DIR}/etc/caseDicts/setConstraintTypes"
-    #include "include/ABLConditions"
+   // #include "include/ABLConditions"
     //#include "include/fixedInlet"//didn't work for some reason so it's included below
     
-    inlet
+     inlet
     {
-       type  fixedValue;
-       value $internalField;
+        type            timeVaryingMappedFixedValue;
+        offset          (0 0 0);
+        setAverage      off;
+    }
 
        // type            atmBoundaryLayerInletVelocity;
        // Uref            $Uref;
@@ -47,7 +49,6 @@ boundaryField
 	//fluctuationScale (0.02 0.01 0.01);
 	//value uniform (7 0 0);
 
-    }
 
   //  inlet
   //  {

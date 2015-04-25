@@ -15,9 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -3 0 0 0 0];
-
 #include        "include/initialConditions"
+
+dimensions      [0 2 -3 0 0 0 0];
 
 internalField   uniform $turbulentEpsilon;
 
@@ -33,6 +33,13 @@ boundaryField
         type            inletOutlet;
         inletValue      $internalField;
         value           $internalField;
+    }
+
+    inlet
+    {
+        type            timeVaryingMappedFixedValue;
+        setAverage      0;
+        offset          0;
     }
 
     lowerWall
