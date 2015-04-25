@@ -37,10 +37,10 @@ boundaryField
 
     inlet
     {
-        type            uniformFixedValue;
-        uniformValue    constant $turbulentKE;
+        type            timeVaryingMappedFixedValue;
+        setAverage      0;
+        offset          0;
     }
-
     lowerWall
     {
         //type            kqRWallFunction;
