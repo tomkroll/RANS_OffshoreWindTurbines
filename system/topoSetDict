@@ -26,7 +26,7 @@ actions
         sourceInfo
         {
  //           box (34.96875 -0.125 0.475) (35.03125 0.125 0.725);
-            box (34.98375 1.375 0.625) (35.01625 1.625 0.875);
+           box (34.98375 0.375 0.0625) (35.01625 0.625 0.3125);
         }
     }
     {
@@ -41,26 +41,50 @@ actions
     }
 
     // actuationDisk2
-    //{
-     //   name    actuationDisk2;
-    //    type    cellSet;
-     //   action  new;
-     //   source  boxToCell;
-     //   sourceInfo
-     //   {
-     //       box (24.875 -0.125 0.475) (25.125 0.125 0.725);
-    //    }
-   // }
-   // {
-     //   name    actuationDisk2;
-    //    type    cellZoneSet;
-     //   action  new;
-      //  source  setToCellZone;
-     //   sourceInfo
-     //   {
-     //       set actuationDisk2;
-     //   }
-   // }
+    {
+        name    actuationDisk2;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+ //           box (36.96875 -0.125 0.475) (37.03125 0.125 0.725);
+           box (36.98375 0.375 0.0625) (37.01625 0.625 0.3125);
+        }
+    }
+    {
+        name    actuationDisk2;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set actuationDisk2;
+        }
+    }
+
+// actuationDisk3
+    {
+        name    actuationDisk3;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+ //           box (38.96875 -0.125 0.475) (39.03125 0.125 0.725);
+           box (38.98375 0.375  0.0625) (39.01625 0.625 0.3125);
+        }
+    }
+    {
+        name    actuationDisk3;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set actuationDisk3;
+        }
+    }
 
 );
 
