@@ -1,6 +1,8 @@
-k-Epsilon Sources
+This file is for an array in the boundary layer. It contains a 3 by 1 array of wind turbines.
 
-A single Actuator Disk representing a wind turbine in a Free Stream flow of 6.82 m/s. In a 40 m long wind tunnel. Turbine coordinates (35 1.5 0.75)
+k-Epsilon Turbulence Model modified with injection of k and epsilon at actuator disk to match recovery of a real wind turbine.
+
+Three Actuator Disks representing wind turbines in a Boundary Layer Flow. A 6.75m long domain in the wind tunnel. Turbine coordinates (35 0.5 0.1875), (37 0.5 0.1875), (39 0.5 0.1875)
 
 
 
