@@ -1,0 +1,95 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include        "include/initialConditions"
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform $flowVelocity;
+
+boundaryField
+{
+    //- Set patchGroups for constraint patches
+    #include "${WM_PROJECT_DIR}/etc/caseDicts/setConstraintTypes"
+    #include "include/ABLConditions"
+    //#include "include/fixedInlet"//didn't work for some reason so it's included below
+    
+    inlet
+    {
+       type  fixedValue;
+       value $internalField;
+
+       // type            atmBoundaryLayerInletVelocity;
+       // Uref            $Uref;
+        //Href            $Href;
+        //n               $windDirection;
+        //z               $zDirection;
+        //z0              $z0;
+      //  value           $internalField;
+        //zGround         $zGround;
+
+	//type turbulentInlet
+	//referenceField uniform (7 0 0);
+	//fluctuationScale (0.02 0.01 0.01);
+	//value uniform (7 0 0);
+
+    }
+
+  //  inlet
+  //  {
+      //  type            atmBoundaryLayerInletVelocity;
+      //  Uref            $Uref;
+       // Href            $Href;
+      //  n               $windDirection;
+     //   z               $zDirection;
+      //  z0              $z0;
+      //  value           $internalField;
+      //  zGround         $zGround;
+    //}
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform (0 0 0);
+        value           $internalField;//uniform (0 0 0);
+    }
+
+    lowerWall
+    {
+        //type            fixedValue;
+        //value           uniform (0 0 0);//$internalField;
+        //type            uniformFixedValue;
+        //value           uniform (0 0 0);
+        //uniformValue    constant (0 0 0);
+        type slip;
+    }
+
+   // #include "include/frontBackUpperPatches" //didn't work for some reason so below
+    upperWall
+    {
+        type slip;
+    }
+
+    frontAndBack
+    {
+        type slip;
+    }
+
+}
+
+
+// ************************************************************************* //
