@@ -1,0 +1,49 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+
+echo "Hello $USER!, running case files...."
+./Allclean
+#1st-------------------------------------------------------------------
+#Make dummy 0 directory
+mkdir 0
+#Reset Important Files
+#rm -f constant/blockMeshDict
+#cp Files/blockMeshDict05m constant/blockMeshDict
+
+#rm -f system/snappyHexMeshDict
+#cp Files/snappyHexMeshDictM system/snappyHexMeshDict
+
+#rm -f 0.org/include/initialConditions
+#cp Files/initialConditions05 0.org/include/initialConditions
+
+#run-------------------------------------------------------------------
+echo "Hello $USER!, running case files...."
+
+runApplication blockMesh
+cp system/decomposeParDict.hierarchical system/decomposeParDict
+runApplication decomposePar
+
+cp system/decomposeParDict.ptscotch system/decomposeParDict
+runParallel snappyHexMesh 4 -overwrite
+
+find . -type f -iname "*level*" -exec rm {} \;
+
+ls -d processor* | xargs -i cp -r 0.org ./{}/0 $1
+
+runParallel topoSet 4
+runParallel $(getApplication) 4  #normal run of application in parallel
+#runApplication $(getApplication) #Only to ignore SnappyHexMesh!
+
+runApplication reconstructParMesh -constant
+runApplication reconstructPar
+sample
+
+python plotting.py
+#mkdir -p /home/tomkroll/Desktop/TestsEpsilon/K6WE
+#cp -r * /home/tomkroll/Desktop/TestsEpsilon/K6WE
+
+
