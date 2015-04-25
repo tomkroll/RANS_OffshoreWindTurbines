@@ -23,6 +23,10 @@ mkdir 0
 #run-------------------------------------------------------------------
 echo "Hello $USER!, running case files...."
 
+./Allclean
+#Make dummy 0 directory
+mkdir 0
+
 runApplication blockMesh
 cp system/decomposeParDict.hierarchical system/decomposeParDict
 runApplication decomposePar
@@ -42,7 +46,7 @@ runApplication reconstructParMesh -constant
 runApplication reconstructPar
 sample
 
-python plotting.py
+#python plotting.py
 #mkdir -p /home/tomkroll/Desktop/TestsEpsilon/K6WE
 #cp -r * /home/tomkroll/Desktop/TestsEpsilon/K6WE
 
