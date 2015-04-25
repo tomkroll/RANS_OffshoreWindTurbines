@@ -25,17 +25,18 @@ sets
     {
         type    uniform;
         axis    x;
-        start   (0 1.5 .75);
-        end     (40 1.5 .75);
-        nPoints 321;
+        start   (34.25 0.5 0.1875);
+        end     (39.999 0.5 0.1875);
+        nPoints 332;
     }
+
 
     data_1D
     {
         type    uniform;
         axis    z;
-        start   (35.25 1.5 0);
-        end     (35.25 1.5 1);
+        start   (35.25 0.5 0);
+        end     (35.25 0.5 1);
         nPoints 33;
     }
 
@@ -43,8 +44,8 @@ sets
     {
         type    uniform;
         axis    z;
-        start   (35.5 1.5 0);
-        end     (35.5 1.5 1);
+        start   (35.5 0.5 0);
+        end     (35.5 0.5 1);
         nPoints 33;
     }
 
@@ -52,8 +53,8 @@ sets
     {
         type    uniform;
         axis    z;
-        start   (36 1.5 0);
-        end     (36 1.5 1);
+        start   (36 0.5 0);
+        end     (36 0.5 1);
         nPoints 33;
     }
 
@@ -61,8 +62,8 @@ sets
     {
         type    uniform;
         axis    z;
-        start   (36.5 1.5 0);
-        end     (36.5 1.5 1);
+        start   (36.5 0.5 0);
+        end     (36.5 0.5 1);
         nPoints 33;
     }
 
@@ -70,8 +71,8 @@ sets
     {
         type    uniform;
         axis    z;
-        start   (37 1.5 0);
-        end     (37 1.5 1);
+        start   (37 0.5 0);
+        end     (37 0.5 1);
         nPoints 33;
     }
 
@@ -79,20 +80,21 @@ sets
     {
         type    uniform;
         axis    z;
-        start   (37.5 1.5 0);
-        end     (37.5 1.5 1);
+        start   (37.5 0.5 0);
+        end     (37.5 0.5 1);
         nPoints 33;
     }
+
 
     data_20D
     {
         type    uniform;
         axis    z;
-        start   (39.999 1.5 0);
-        end     (39.999 1.5 1);
+        start   (39.999 0.5 0);
+        end     (39.999 0.5 1);
         nPoints 33;
     }
-
+    
 );
 
 fields          (U p k epsilon);

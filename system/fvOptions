@@ -29,7 +29,7 @@ disk1
         Cp          0.34;      // Cp
         Ct          0.7;       // Ct
         diskArea    0.0490873852;         // disk area
-        upstreamPoint (35 1.5 0.75);
+        upstreamPoint (35 0.5 0.1875);
     }
 }
 
@@ -46,8 +46,8 @@ kSource
         volumeMode      absolute; //specific
         injectionRate
         {
-            k   4.05;
-            epsilon   150;//l = 0.1 mm
+            k   2.584;
+            epsilon   75;//l = 0.1 mm
         }
     }
 }

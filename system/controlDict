@@ -17,6 +17,7 @@ FoamFile
 libs
 (
     "libOpenFOAM.so"
+    "libfvOptions.so"
     "libincompressibleTurbulenceModel.so"
     "libincompressibleRASModels.so"
     "libmyIncompressibleRASModels.so"
@@ -36,7 +37,7 @@ deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   1000;//50
+writeInterval   100;//50
 
 purgeWrite      0;
 
